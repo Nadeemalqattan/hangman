@@ -1,17 +1,21 @@
 .title {
   position: absolute;
   top: 50px;
-  left: 40%;
-  text-align: center;
-  margin: auto;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .wrongAnswers {
   position: absolute;
-  top: 50px;
-  left: 40%;
-  text-align: center;
-  margin: auto;
+  top: 40px;
+  right: 30px;
+}
+
+.guessWord {
+  position: absolute;
+  top: 220px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 h1 {
@@ -26,18 +30,26 @@ h3 {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 100%;
-  height: 100%;
 }
 
 .hangman {
   position: absolute;
-  top: 20%;
-  left: 26.5%;
-  margin: auto;
+  top: 430px;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .guessedWordDash {
   font-size: 110px;
   font-weight: bold;
-  text-align: center;
+  position: absolute;
+  top: 630px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.playAgain {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }

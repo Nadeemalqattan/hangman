@@ -47,7 +47,6 @@ class Hangman extends Component {
   generateButtons() {
     return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
       <button
-        type="button"
         class="btn btn-dark m-1"
         key={letter}
         value={letter}
@@ -63,7 +62,7 @@ class Hangman extends Component {
   playAgainButton = () => {
     this.setState({
       mistake: 0,
-      guessed: new Set([]),
+      guessed: new Set(),
       answer: randomWord(),
     });
   };
@@ -94,14 +93,18 @@ class Hangman extends Component {
         </h3>
 
         <div>
-          <h3>Guess the word:</h3>
+          <h3 className="guessWord">Guess animal word:</h3>
           <p className="guessedWordDash">
             {!gameOver ? this.guessedWord() : this.state.answer}
           </p>
           <br />
           <h3>{gameStat}</h3>
 
-          <button className="btn btn-dark m-1" onClick={this.playAgainButton}>
+          <button
+            className="playAgain"
+            class="btn btn-dark m-1"
+            onClick={this.playAgainButton}
+          >
             Play Again
           </button>
         </div>

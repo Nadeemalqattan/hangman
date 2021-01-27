@@ -4,11 +4,7 @@ import backgroundImage from "./components/images/background.jpg";
 function App() {
   return (
     <div className="Hangman">
-      <img
-        className="backGroundImage"
-        alt="cookie shop"
-        src={backgroundImage}
-      />
+      <img className="backGroundImage" alt="Background" src={backgroundImage} />
       <Hangman />
     </div>
   );
