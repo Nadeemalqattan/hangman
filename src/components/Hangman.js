@@ -2,7 +2,7 @@ import { Component } from "react";
 import "./Hangman.css";
 import { randomWord } from "./Words";
 
-// <--- Hangman images--->
+// <--- Hangman images --->
 import step0 from "./images/0.png";
 import step1 from "./images/1.png";
 import step2 from "./images/2.png";
@@ -12,7 +12,7 @@ import step5 from "./images/5.png";
 import step6 from "./images/6.png";
 
 class Hangman extends Component {
-  //<--- Max wrong guesses 6--->
+  // <--- Max wrong guesses 6 --->
   static defaultProps = {
     maxWrong: 6,
     images: [step0, step1, step2, step3, step4, step5, step6],
@@ -27,7 +27,7 @@ class Hangman extends Component {
     };
   }
 
-  //<--- Adding guessed letters --->
+  // <--- Adding guessed letters --->
   handleGuess = (e) => {
     let letter = e.target.value;
     this.setState((st) => ({
@@ -40,15 +40,15 @@ class Hangman extends Component {
   guessedWord() {
     return this.state.answer
       .split("")
-      .map((letter) => (this.state.guessed.has(letter) ? letter : "_ "));
+      .map((letter) => (this.state.guessed.has(letter) ? letter : " _ "));
   }
 
-  // <--- Page buttons--->
+  // <--- Page buttons --->
   generateButtons() {
-    return "abcdefghjklmnopqrstuvwxyz".split("").map((letter) => (
+    return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map((letter) => (
       <button
         type="button"
-        class="btn btn-light m-1"
+        class="btn btn-dark m-1"
         key={letter}
         value={letter}
         onClick={this.handleGuess}
@@ -58,6 +58,15 @@ class Hangman extends Component {
       </button>
     ));
   }
+
+  // <---Play again Button --->
+  playAgainButton = () => {
+    this.setState({
+      mistake: 0,
+      guessed: new Set([]),
+      answer: randomWord(),
+    });
+  };
 
   render() {
     const gameOver = this.state.mistake >= this.props.maxWrong;
@@ -72,22 +81,29 @@ class Hangman extends Component {
     }
 
     return (
-      <div className="Hangman">
-        <h1>Hangman</h1>
+      <div>
+        <h1 className="title">Hangman</h1>
+        <img
+          className="hangman"
+          src={this.props.images[this.state.mistake]}
+          alt=""
+        />
 
-        <div>
-          <div class="alert alert-danger" role="alert">
-            <h3>
-              Wrong Guesses: {this.state.mistake} of {this.props.maxWrong}
-            </h3>
-          </div>
+        <h3 className="wrongAnswers">
+          Wrong Guesses: {this.state.mistake} of {this.props.maxWrong}
+        </h3>
 
-          <img src={this.props.images[this.state.mistake]} alt="" />
-        </div>
         <div>
           <h3>Guess the word:</h3>
-          <h3>{!gameOver ? this.guessedWord() : this.state.answer}</h3>
+          <p className="guessedWordDash">
+            {!gameOver ? this.guessedWord() : this.state.answer}
+          </p>
+          <br />
           <h3>{gameStat}</h3>
+
+          <button className="btn btn-dark m-1" onClick={this.playAgainButton}>
+            Play Again
+          </button>
         </div>
       </div>
     );

@@ -1,7 +1,17 @@
-.Hangman {
-  width: 80%;
-  margin-top: 50px;
-  align-items: center;
+.title {
+  position: absolute;
+  top: 50px;
+  left: 40%;
+  text-align: center;
+  margin: auto;
+}
+
+.wrongAnswers {
+  position: absolute;
+  top: 50px;
+  left: 40%;
+  text-align: center;
+  margin: auto;
 }
 
 h1 {
@@ -11,6 +21,23 @@ h1 {
 h3 {
   text-align: center;
 }
-img {
+.backGroundImage {
+  position: relative;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.hangman {
+  position: absolute;
+  top: 20%;
+  left: 26.5%;
   margin: auto;
+}
+.guessedWordDash {
+  font-size: 110px;
+  font-weight: bold;
+  text-align: center;
 }
